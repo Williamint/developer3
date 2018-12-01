@@ -1,0 +1,126 @@
+<html>
+    {% load staticfiles %}
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizza - User Page</title>
+    <script src="https://unpkg.com/vue"></script>
+
+<style>
+  * {
+      box-sizing: border-box;
+    }
+    body {
+      background-image: url("{% static "userpage.jpeg" %}");
+      background-size: cover;
+      font-family: Arial;
+      padding: 20px;
+    }
+    /* Photo */
+    .photo {
+      margin-top: 20px;
+      border-radius: 100px;
+      border: 4px solid #fff;
+    }
+    /* Title */
+    .header {
+      padding: 30px;
+      font-size: 40px;
+      text-align: center;
+      background: white;
+    }
+    /* Add a card effect for columns */
+    .card {
+      background-color: white;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    /* Change the layout automatically when the screen is less than 800px wide */
+    @media screen and (max-width: 800px) {
+      .leftcolumn, .rightcolumn {
+          width: 100%;
+          padding: 0;
+        }
+      }
+      /* Enter box */
+      .form-box textarea {
+        width: 60%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: 2px solid #DEDEDE;
+        border-radius: 5px;
+        background: #F1F1F1;
+        resize: none;
+        min-height: 50px;
+        font-size: 10pt;
+      }
+      /* Button A layout */
+      .form-box .buttona {
+        background-color: #008000;
+        color: #FFFFFF;
+        padding: 16px 20px;
+        border: 2px solid #DEDEDE;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 30%;
+        margin-bottom:10px;
+        opacity: 0.8;
+        font-size: 10pt;
+      }
+      /* Button B layout */
+      .buttonb {
+        background-color: #3B5998;
+        color: #FFFFFF;
+        padding: 16px 20px;
+        border: 2px solid #8B9DC3;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 30%;
+        margin-bottom:10px;
+        opacity: 0.8;
+        font-size: 10pt;
+      }
+      /* Signout button layout */
+      .signout {
+        background-color: #FF0000;
+        color: #FFFFFF;
+        padding: 16px 20px;
+        border: 2px solid #DEDEDE;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 60%;
+        margin-bottom:10px;
+        opacity: 0.8;
+        font-size: 10pt;
+      }
+</style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h2>Welcome, {{ nickname }}!</h2>
+  </div>
+      <div class="card">
+        <form class="form-box" method="get">
+          <center>
+          <img class="photo" src="{% static "male.png" %}" style="width:20%;">
+          <br><br><br>
+
+          <input type="submit" class = "buttona" value="Group Chat" name="msg">
+          <input type="submit" class = "buttona" value="Blog" name="blog"><br>
+          <input type="submit" class = "buttonb" value="Edit" name="edit">
+          <input type="submit" class = "buttonb" value="Friends" name="friend"><br>
+          <input type="submit" class = "signout" value="Sign Out" name="sigt">
+
+        </center>
+        </form>
+    </div>
+  </div>
+</body>
+</html>

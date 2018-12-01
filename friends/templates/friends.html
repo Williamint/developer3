@@ -1,0 +1,104 @@
+<html>
+    {% load staticfiles %}
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizza - Friend List</title>
+    <script src="https://unpkg.com/vue"></script>
+
+<style>
+  * {
+      box-sizing: border-box;
+    }
+    body {
+      background-image: url("{% static "friendlist.jpeg" %}");
+      background-size: cover;
+      font-family: Arial;
+      padding: 20px;
+    }
+    /* Title */
+    .header {
+      padding: 30px;
+      font-size: 40px;
+      text-align: center;
+      background: white;
+    }
+    /* Add a card effect for columns */
+    .card {
+      background-color: white;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    /* Change the layout automatically when the screen is less than 800px wide */
+    @media screen and (max-width: 800px) {
+      .leftcolumn, .rightcolumn {
+          width: 100%;
+          padding: 0;
+        }
+      }
+      /* Enter box */
+      .form-box textarea {
+        width: 60%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: 2px solid #DEDEDE;
+        border-radius: 5px;
+        background: #F1F1F1;
+        resize: none;
+        min-height: 50px;
+        font-size: 10pt;
+      }
+      /* Add button layout */
+      .form-box .button {
+        background-color: #008000;
+        color: #FFFFFF;
+        padding: 16px 20px;
+        border: 2px solid #DEDEDE;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 30%;
+        margin-bottom:10px;
+        opacity: 0.8;
+        font-size: 10pt;
+      }
+      /* Return button layout */
+      .form-box .return {
+        background-color: #FF0000;
+        color: #FFFFFF;
+        padding: 16px 20px;
+        border: 2px solid #DEDEDE;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 30%;
+        margin-bottom:10px;
+        opacity: 0.8;
+        font-size: 10pt;
+      }
+</style>
+</head>
+
+<body>
+  <div class="header">
+    <h2>Friend List</h2>
+  </div>
+      <div class="card">
+        <form class="form-box" method="get">
+          <center>
+
+
+
+
+          <textarea placeholder="Enter your friend's user ID" name="friend" ></textarea><br>
+          <input type="submit" class="button" name="add" value="Add Friend">
+          <input type="submit" class="return" name="bth" value="Return to Profile Page">
+        </center>
+        </form>
+    </div>
+  </div>
+</body>
+</html>

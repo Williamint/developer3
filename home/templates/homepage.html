@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<TITLE>Home Page</TITLE>
+    <!-- Add "scoped" attribute to limit CSS to this component only -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+BODY{
+    {% load staticfiles %}
+    background-image: url("{% static "login.jpeg" %}");
+    background-size: cover;
+    font-family: Arial;
+    padding:20px;
+}
+h1, h2 {
+  font-weight: normal;
+}
+.hello{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 500px;
+}
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 45%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #fdfefe;
+  font-family: "Courier";
+}
+</style>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+</script>
+</HEAD>
+<BODY>
+
+	<div class="hello">
+        <h1><a>Welcome to Developers</a></h1>
+    <form method="get">
+        <a>Username:</a> <input type = "text" name = "uname">
+        <link rel="icon" type="image/vnd.microsoft.icon" href="http://example.com/favicon.ico" /><br>
+        <a>Password:</a> <input type = "password" name = "pword"><br>
+        <input type="submit" name = 'log' value="Login">
+        <input type="submit" name = 'sig' value="SignUp">
+    </form>
+        {% for c in error %}
+        <div id="snackbar">{{ error }}</div>
+        <script>myFunction();</script>
+        {% endfor %}
+  </div>
+
+</BODY>
+</html>
