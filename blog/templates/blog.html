@@ -126,7 +126,11 @@
 	    <div class="leftcolumn">
 	      <div class="card">
 	        <center>
-	        <img class="photo" src="{% static "male.png" %}" style="width:80%;">
+	       {% if gender %}
+                <img class="photo" src="{% static "male.png" %}" style="width:80%;">
+           {% else %}
+                <img class="photo" src="{% static "female.png" %}" style="width:80%;">
+           {% endif %}
 	        <h2>{{ pname }}</h2>
             <form method="get">
 	        <input type="submit" name="abm" class="other" value="About Me">

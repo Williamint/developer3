@@ -39,7 +39,8 @@ def homepgView(usr):
     profile = ProfileTb.objects.get(username=usr)
     usrProfileDic = {'userstory':profile.userstory, 'firstname':profile.firstname,
                      'lastname':profile.lastname, 'email':profile.email,
-                     'education':profile.education, 'dateofbirth':profile.dateofbirth}
+                     'education':profile.education, 'dateofbirth':profile.dateofbirth,
+                     'gender': profile.gender}
     return usrProfileDic
 
 
@@ -78,6 +79,14 @@ def addFriend(usr, friendusr):
         return True
     return False
 
+def getFriend(usr):
+    profile = ProfileTb.objects.get(username=usr)
+    friendstring = profile.friends
+    if friendstring is None:
+        return ''
+    else:
+        return friendstring.split('-')
+
 
 ##return a list of friends' username
 def friendsList(usr):
@@ -105,22 +114,24 @@ def insertChat(usr, friend, chat_arg):
     insertchatQuery.save()
     return
 
+
 def adduserstory(usr, msg):
     profile = ProfileTb.objects.get(username=usr)
     userstoryv = profile.userstory
     userstoryv = userstoryv + '-' + msg
     profile.userstory = userstoryv
     profile.save()
-    return userstory(usr)
+    return getuserstory(usr)
 
 
-def userstory(usr):
+def getuserstory(usr):
     profile = ProfileTb.objects.get(username=usr)
     userstring = profile.userstory
     if userstring is None:
         return False
     else:
         return userstring.split('-')
+
 
 def getChat(usr, friend):
     usrsChat = usr + '-' + friend

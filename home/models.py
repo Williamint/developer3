@@ -129,6 +129,7 @@ class UserTb(models.Model):
         managed = False
         db_table = 'user_tb'
 
+
 class ProfileTb(models.Model):
     username = models.CharField(unique=True, max_length=45)
     password = models.CharField(max_length=45)
@@ -141,9 +142,11 @@ class ProfileTb(models.Model):
     friends = models.CharField(max_length=45, blank=True, null=True)
     dater = models.DateTimeField(auto_now_add=True)
     gender = models.CharField(max_length=45)
+
     class Meta:
         managed = True
         db_table = 'profile_tb'
+
 
 class PhotoTb(models.Model):
     username = models.CharField(max_length=45)
@@ -153,6 +156,7 @@ class PhotoTb(models.Model):
     class Meta:
         managed = False
         db_table = 'photo_tb'
+
 
 class ChatTb(models.Model):
     usrnames = models.CharField(max_length=45, blank=True, null=True)

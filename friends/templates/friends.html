@@ -79,6 +79,14 @@
         opacity: 0.8;
         font-size: 10pt;
       }
+     .button{
+            background-color: Transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+        }
 </style>
 </head>
 
@@ -87,13 +95,17 @@
     <h2>Friend List</h2>
   </div>
       <div class="card">
-        <form class="form-box" method="get">
           <center>
 
+          {% for friend in friend_list %}
+             <form method="get">
+            <input type="submit" class="button" name = "friendB" value="{{ friend }}">
+            </form>
+          {% endfor %}
 
 
-
-          <textarea placeholder="Enter your friend's user ID" name="friend" ></textarea><br>
+          <form class="form-box" method="get">
+          <textarea placeholder="Enter your friend's user ID" name="search" ></textarea><br>
           <input type="submit" class="button" name="add" value="Add Friend">
           <input type="submit" class="return" name="bth" value="Return to Profile Page">
         </center>

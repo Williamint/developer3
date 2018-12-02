@@ -1,0 +1,173 @@
+<html>
+        {% load staticfiles %}
+	  <head>
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Pizza - Blog Page</title>
+	    <script src="https://unpkg.com/vue"></script>
+
+	<style>
+	  * {
+	      box-sizing: border-box;
+	    }
+
+      body{
+          background-image: url("{% static "blogpage.jpeg" %}");
+          background-size: cover;
+	      font-family: Arial;
+	      padding: 20px;
+	    }
+
+      /* Photo */
+    .photo {
+      margin-top: 20px;
+      border-radius: 100px;
+      border: 4px solid #fff;
+    }
+
+	    /* Title */
+	    .header {
+      padding: 30px;
+      font-size: 40px;
+      text-align: center;
+      background: white;
+    }
+    /* Create two unequal columns that floats next to each other */
+    /* Left column */
+    .leftcolumn {
+      float: left;
+      width: 25%;
+    }
+    /* Right column */
+    .rightcolumn {
+      float: left;
+      width: 75%;
+      padding-left: 20px;
+    }
+    /* Add a card effect for columns */
+    .card {
+      background-color: white;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    /* Change the layout automatically when the screen is less than 800px wide */
+    @media screen and (max-width: 800px) {
+      .leftcolumn, .rightcolumn {
+          width: 100%;
+          padding: 0;
+        }
+      }
+      /* Story input box */
+      .form-box textarea {
+        width: 96%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: 2px solid #DEDEDE;
+        border-radius: 5px;
+        background: #F1F1F1;
+        resize: none;
+        min-height: 50px;
+        font-size: 10pt;
+      }
+/* Post button layout */
+      .form-box .post {
+        background-color: #008000;
+        color: #FFFFFF;
+        padding: 16px 20px;
+        border: 2px solid #DEDEDE;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 49.7%;
+        margin-bottom:10px;
+        opacity: 0.8;
+        font-size: 10pt;
+      }
+      /* Return button layout */
+      .return {
+        background-color: #FF0000;
+        color: #FFFFFF;
+        padding: 16px 20px;
+        border: 2px solid #DEDEDE;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 49.7%;
+        margin-bottom:10px;
+        opacity: 0.8;
+        font-size: 10pt;
+      }
+      /* Other button layout */
+      .other {
+        background-color: #3B5998;
+        color: #FFFFFF;
+        padding: 10px 10px;
+        border: 2px solid #8B9DC3;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 250px;
+        margin-bottom:10px;
+        opacity: 0.8;
+        font-size: 10pt;
+      }
+        </style>
+      </head>
+
+	<body>
+	  <div class="header">
+	    <h2>Q & A</h2>
+	  </div>
+
+
+	  <div class="row">
+	    <div class="leftcolumn">
+	      <div class="card">
+	        <center>
+	       {% if gender %}
+                <img class="photo" src="{% static "male.png" %}" style="width:80%;">
+           {% else %}
+                <img class="photo" src="{% static "female.png" %}" style="width:80%;">
+           {% endif %}
+	        <h2>{{ pname }}</h2>
+                <p></p>
+                <p>My Personal Information:</p>
+                <p>Firstname: {{ fn }}</p>
+                <p>Lastname: {{ ln }}</p>
+                <p>DOB: {{ dob }}</p>
+                <p>Email: {{ mail }}</p>
+                <p>Education: {{ edu }}</p>
+                <p></p>
+                <p>My Friend Lists:</p>
+                {% for friend in friend_list %}
+                    <p>friend</p>
+                {% endfor %}
+
+            </center>
+	      </div>
+	    </div>
+
+
+	    <div class="rightcolumn">
+	      <div class="card">
+	        <form class="form-box" method="get">
+	          <center>
+	          <h2>Stories</h2>
+              {% for c in msg_lists %}
+                  <p>{{ c }}</p>
+              {% endfor %}
+               <textarea placeholder="New Post" name="story"></textarea>
+
+                  <p>Hi! {{ currentuser }}</p>
+               <input type="submit" class="post" value="Post Story" name="share"><br>
+	          <input type="submit" class="return" value="Back To Friend List" name="btf">
+	        </center>
+	        </form>
+	      </div>
+	    </div>
+
+	  </div>
+	</body>
+</html>
