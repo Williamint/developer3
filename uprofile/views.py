@@ -16,6 +16,8 @@ def index(request):
 
     if request.GET.get('save'):
         if Check.checkeditpage(Check, request.GET['email'], request.GET['bith']):
+            db_functions.editProfile(views.getusername(), request.GET['firstn'], request.GET['lastn'],
+                                     request.GET['email'], request.GET['bith'], request.GET['education'])
             return HttpResponseRedirect('/userpage/')
         else:
             dictP = db_functions.homepgView(views.getusername())
